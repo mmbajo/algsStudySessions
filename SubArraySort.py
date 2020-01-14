@@ -1,3 +1,6 @@
+'''O(n) time and O(1) space'''
+
+
 def subarraySort(array):
     minNotSorted = float('inf')
     maxNotSorted = float('-inf')
