@@ -14,3 +14,7 @@ class TestFourSum(unittest.TestCase):
         self.assertTrue(len(output) == 1)
         for quad in quads:
             self.assertTrue(sortAndStringify(quad) in output)
+
+
+if __name__ == '__main__':
+    unittest.main()
