@@ -3,9 +3,8 @@
 1st Solution - O(bns) time | O(n) space
 '''
 
-# 1st solutions
 
-
+# 1st solution
 def multiStringSearch1(bigString, smallStrings):
     def isSmallStringInBigString(bigString, smallString):
         for i in range(len(bigString)):
@@ -70,3 +69,41 @@ class SuffixTrie:
 def multiStringSearch2(bigString, smallStrings):
     trie = SuffixTrie(bigString)
     return [trie.contains(smallString) for smallString in smallStrings]
+
+# 3rd solution
+
+
+class Trie:
+    def __init__(self):
+        self.root = {}
+        self.endSymbol = '*'
+
+    def insert(self, string):
+        currNode = self.root
+        for j in range(len(string)):
+            currLetter = string[j]
+            if currLetter not in currNode:
+                currNode[currLetter] = {}
+            currNode = currNode[currLetter]
+        currNode[self.endSymbol] = string
+
+
+def multiStringSearch3(bigString, smallStrings):
+    trie = Trie()
+    for smallString in smallStrings:
+        trie.insert(smallString)
+    containedStrings = {}
+    for i in range(len(bigString)):
+        findSmallStringsIn(bigString, i, trie, containedStrings)
+    return [string in containedStrings for string in smallStrings]
+
+
+def findSmallStringsIn(bigString, startIdx, trie, containedStrings):
+    currNode = trie.root
+    for j in range(startIdx, len(bigString)):
+        currLetter = bigString[j]
+        if currLetter not in currNode:
+            break
+        currNode = currNode[currLetter]
+        if trie.endSymbol in currNode:
+            containedStrings[currNode[trie.endSymbol]] = True
