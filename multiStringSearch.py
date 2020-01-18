@@ -37,3 +37,36 @@ def multiStringSearch1(bigString, smallStrings):
 
     return [isSmallStringInBigString(bigString, smallString)
             for smallString in smallStrings]
+
+
+# 2nd solution
+class SuffixTrie:
+    def __init__(self, string):
+        self.root = {}
+        self.populateSuffixTrieFrom(string)
+
+    def populateSuffixTrieFrom(self, string):
+        for i in range(len(string)):
+            self.insertSubstringStartingAt(i, string)
+
+    def insertSubstringStartingAt(self, startIdx, string):
+        currNode = self.root
+        for j in range(startIdx, len(string)):
+            currLetter = string[j]
+            if currLetter not in currNode:
+                currNode[currLetter] = {}
+            currNode = currNode[currLetter]
+
+    def contains(self, string):
+        currNode = self.root
+        for j in range(len(string)):
+            currLetter = string[j]
+            if currLetter not in currNode:
+                return False
+            currNode = currNode[currLetter]
+        return True
+
+
+def multiStringSearch2(bigString, smallStrings):
+    trie = SuffixTrie(bigString)
+    return [trie.contains(smallString) for smallString in smallStrings]
