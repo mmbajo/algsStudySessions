@@ -70,9 +70,8 @@ def multiStringSearch2(bigString, smallStrings):
     trie = SuffixTrie(bigString)
     return [trie.contains(smallString) for smallString in smallStrings]
 
+
 # 3rd solution
-
-
 class Trie:
     def __init__(self):
         self.root = {}
