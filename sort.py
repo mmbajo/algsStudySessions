@@ -48,6 +48,8 @@ class QuickSort:
     Best case: O(nlogn) time | O(1) space
     Average case: O(nlogn) time | O(1) space
     Worst case: O(n^2) time | O(1) space
+
+    Note: Worst case happens if the partitioner is the min or max of the array!
     '''
 
     def sort(self, array: List[float]) -> List[float]:
