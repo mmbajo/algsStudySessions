@@ -89,3 +89,13 @@ class QuickSort:
 
     def swap(self, i: int, j: int, array: List[float]):
         array[i], array[j] = array[j], array[i]
+
+
+class MergeSort:
+    '''
+    Best case: O(nlogn) time | O(nlogn) space
+    Average case: O(nlogn) time | O(nlogn) space
+    Worst case: O(nlogn) time | O(nlogn) space
+    '''
+
+    pass
