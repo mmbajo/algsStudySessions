@@ -91,7 +91,7 @@ class QuickSort:
         array[i], array[j] = array[j], array[i]
 
 
-class MergeSort:
+class MergeSort1:
     '''
     Best case: O(nlogn) time | O(nlogn) space
     Average case: O(nlogn) time | O(nlogn) space
@@ -136,3 +136,66 @@ class MergeSort:
             j += 1
             k += 1
         return sortedArray
+
+
+class MergeSort2:
+    '''
+    Best case: O(nlogn) time | O(n) space
+    Average case: O(nlogn) time | O(n) space
+    Worst case: O(nlogn) time | O(n) space
+    In this version of merge sort we use an auxiliarry array to sort
+    the main array in place.
+    Damn! This is very difficult to grasp!!!
+    '''
+
+    def sort(self, array: List[float]) -> List[float]:
+        print("---------------------MergeSortv2------------------------------")
+        return self.mergeSort(array)
+
+    def mergeSort(self, array: List[float]) -> List[float]:
+        if len(array) <= 1:
+            return array
+        auxArray = array[:]
+        self.mergeSortHelper(array, 0, len(array) - 1, auxArray)
+        return array
+
+    def mergeSortHelper(self,
+                        mainArray: List[float],
+                        startIdx: int,
+                        endIdx: int,
+                        auxArray: List[float]):
+        if startIdx == endIdx:
+            return
+        middleIdx = (startIdx + endIdx) // 2
+        self.mergeSortHelper(auxArray, startIdx, middleIdx, mainArray)
+        self.mergeSortHelper(auxArray, middleIdx + 1, endIdx, mainArray)
+        self.doMerge(mainArray, startIdx, middleIdx, endIdx, auxArray)
+        print('{} middleIdx -> {}'.format(mainArray, middleIdx))
+
+    def doMerge(self,
+                mainArray: List[float],
+                startIdx: int,
+                middleIdx: int,
+                endIdx: int,
+                auxArray: List[float]):
+        i = startIdx
+        k = startIdx
+        j = middleIdx + 1
+        while i <= middleIdx and j <= endIdx:
+            if auxArray[i] <= auxArray[j]:
+                mainArray[k] = auxArray[i]
+                i += 1
+            elif auxArray[i] > auxArray[j]:
+                mainArray[k] = auxArray[j]
+                j += 1
+            k += 1
+
+        while i <= middleIdx:
+            mainArray[k] = auxArray[i]
+            i += 1
+            k += 1
+
+        while j <= endIdx:
+            mainArray[k] = auxArray[j]
+            j += 1
+            k += 1
