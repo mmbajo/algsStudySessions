@@ -98,4 +98,41 @@ class MergeSort:
     Worst case: O(nlogn) time | O(nlogn) space
     '''
 
-    pass
+    def sort(self, array: List[float]) -> List[float]:
+        print("---------------------MergeSort--------------------------------")
+        return self.mergeSort(array)
+
+    def mergeSort(self, array: List[float]) -> List[float]:
+        if len(array) <= 1:
+            return array
+        middleIdx = len(array) // 2
+        leftSorted = self.mergeSort(array[:middleIdx])
+        rightSorted = self.mergeSort(array[middleIdx:])
+        sortedArray = self.mergeSortedArray(leftSorted, rightSorted)
+        print('{} middleIdx -> {}'.format(sortedArray, middleIdx))
+        return sortedArray
+
+    def mergeSortedArray(self,
+                         leftArray: List[float],
+                         rightArray: List[float]) -> List[float]:
+        sortedArray = [None] * (len(leftArray) + len(rightArray))
+        i = j = k = 0
+        while i < len(leftArray) and j < len(rightArray):
+            if leftArray[i] <= rightArray[j]:
+                sortedArray[k] = leftArray[i]
+                i += 1
+            elif leftArray[i] > rightArray[j]:
+                sortedArray[k] = rightArray[j]
+                j += 1
+            k += 1
+
+        while i < len(leftArray):
+            sortedArray[k] = leftArray[i]
+            i += 1
+            k += 1
+
+        while j < len(rightArray):
+            sortedArray[k] = rightArray[j]
+            j += 1
+            k += 1
+        return sortedArray
