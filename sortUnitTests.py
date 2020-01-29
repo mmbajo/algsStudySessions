@@ -1,10 +1,10 @@
 import unittest
-from sort import HeapSort, QuickSort, MergeSort1, MergeSort2, SelectionSort
+from sort import *
 
 
 class TestSortingAlgorithms(unittest.TestCase):
     def test_HeapSort(self):
-        array = [12, 3, 4, 5, 2, 1, 4, 5]
+        array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
         out = HeapSort().sort(array)
         self.assertEqual(sorted(array), out)
 
@@ -26,6 +26,11 @@ class TestSortingAlgorithms(unittest.TestCase):
     def test_SelectionSort(self):
         array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
         out = SelectionSort().sort(array)
+        self.assertEqual(out, sorted(array))
+
+    def test_SelectionSort(self):
+        array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
+        out = BubbleSort().sort(array)
         self.assertEqual(out, sorted(array))
 
 

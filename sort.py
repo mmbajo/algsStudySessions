@@ -214,13 +214,38 @@ class SelectionSort:
         lastIdx = len(array) - 1
         currIdx = 0
         while currIdx < lastIdx:
-            print('{} middleIdx -> {}'.format(array, currIdx))
+            print('{} currIdx -> {}'.format(array, currIdx))
             smallestIdx = currIdx
             for i in range(currIdx + 1, lastIdx + 1):
                 if array[i] < array[smallestIdx]:
                     smallestIdx = i
             self.swap(currIdx, smallestIdx, array)
             currIdx += 1
+        return array
+
+    def swap(self, i: int, j: int, array: List[float]):
+        array[i], array[j] = array[j], array[i]
+
+
+class BubbleSort:
+    '''
+    Best case: O(n) time | O(1) space
+    Average case: O(n^2) time | O(1) space
+    Worst case: O(n^2) time | O(1) space
+    '''
+
+    def sort(self, array: List[float]) -> List[float]:
+        print("-----------------------BubbleSort----------------------------")
+        isSorted = False
+        counter = 0
+        while not isSorted:
+            isSorted = True
+            for i in range(len(array) - 1 - counter):
+                if array[i] > array[i + 1]:
+                    self.swap(i, i + 1, array)
+                    print('{} Iter {} Swap {} -> {}'.format(array, counter, i, i + 1))
+                    isSorted = False
+            counter += 1
         return array
 
     def swap(self, i: int, j: int, array: List[float]):
