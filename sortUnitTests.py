@@ -28,9 +28,14 @@ class TestSortingAlgorithms(unittest.TestCase):
         out = SelectionSort().sort(array)
         self.assertEqual(out, sorted(array))
 
-    def test_SelectionSort(self):
+    def test_BubbleSort(self):
         array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
         out = BubbleSort().sort(array)
+        self.assertEqual(out, sorted(array))
+
+    def test_InsertionSort(self):
+        array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
+        out = InsertionSort().sort(array)
         self.assertEqual(out, sorted(array))
 
 

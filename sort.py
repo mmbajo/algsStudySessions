@@ -250,3 +250,24 @@ class BubbleSort:
 
     def swap(self, i: int, j: int, array: List[float]):
         array[i], array[j] = array[j], array[i]
+
+
+class InsertionSort:
+    '''
+    Best case: O(n) time | O(1) space
+    Average case: O(n^2) time | O(1) space
+    Worst case: O(n^2) time | O(1) space
+    '''
+
+    def sort(self, array: List[float]) -> List[float]:
+        print("----------------------InsertionSort---------------------------")
+        for i in range(1, len(array)):
+            j = i
+            while j > 0 and array[j] < array[j - 1]:
+                self.swap(j, j - 1, array)
+                print('{} Iter {} Swap {} -> {}'.format(array, i, j, j - 1))
+                j -= 1
+        return array
+
+    def swap(self, i: int, j: int, array: List[float]):
+        array[i], array[j] = array[j], array[i]
