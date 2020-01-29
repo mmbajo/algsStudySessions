@@ -199,3 +199,29 @@ class MergeSort2:
             mainArray[k] = auxArray[j]
             j += 1
             k += 1
+
+
+class SelectionSort:
+    '''
+    For every index of the array, finde the smallest from index to end
+    Best case: O(n^2) time | O(1) space
+    Average case: O(n^2) time | O(1) space
+    Worst case: O(n^2) time | O(1) space
+    '''
+
+    def sort(self, array: List[float]) -> List[float]:
+        print("---------------------SelectionSort----------------------------")
+        lastIdx = len(array) - 1
+        currIdx = 0
+        while currIdx < lastIdx:
+            print('{} middleIdx -> {}'.format(array, currIdx))
+            smallestIdx = currIdx
+            for i in range(currIdx + 1, lastIdx + 1):
+                if array[i] < array[smallestIdx]:
+                    smallestIdx = i
+            self.swap(currIdx, smallestIdx, array)
+            currIdx += 1
+        return array
+
+    def swap(self, i: int, j: int, array: List[float]):
+        array[i], array[j] = array[j], array[i]

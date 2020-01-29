@@ -1,5 +1,5 @@
 import unittest
-from sort import HeapSort, QuickSort, MergeSort1, MergeSort2
+from sort import HeapSort, QuickSort, MergeSort1, MergeSort2, SelectionSort
 
 
 class TestSortingAlgorithms(unittest.TestCase):
@@ -21,6 +21,11 @@ class TestSortingAlgorithms(unittest.TestCase):
     def test_MergeSort2(self):
         array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
         out = MergeSort2().sort(array)
+        self.assertEqual(out, sorted(array))
+
+    def test_SelectionSort(self):
+        array = [0, 0, 0, 0, 0, -1, -36, 45, 34, 243, 0, 0, 0]
+        out = SelectionSort().sort(array)
         self.assertEqual(out, sorted(array))
 
 
