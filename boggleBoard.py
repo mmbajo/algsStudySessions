@@ -1,5 +1,9 @@
 from typing import List, Dict
 
+'''
+The Algorithm takes O(nm*8^s + ws) time and O(nm + ws) space
+'''
+
 
 class BoggleBoardSolution:
     def boggleBoard(self,
